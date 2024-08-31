@@ -23,6 +23,12 @@ const Menuitems = [
     href: "/",
   },
   {
+    id: uniqueId(),
+    title: "IoT",
+    icon: IconLayoutDashboard,
+    href: "/iot",
+  },
+  {
     navlabel: true,
     subheader: "Utilities",
   },

@@ -14,6 +14,7 @@ const ValveControl = (props: any) => {
     const [valve1, setValve1] = useState(false);
     const [valve2, setValve2] = useState(false);
     const [valve3, setValve3] = useState(false);
+    const [pompa, setPompa] = useState(false);
 
     const successlight = theme.palette.success.light;
     console.log(props.valve1value, "<<<valve1value");
@@ -35,19 +36,39 @@ const ValveControl = (props: any) => {
                             }} />
                         <Typography variant="subtitle2" fontWeight="600" fontSize={16} > Valve 1 </Typography>
                         <Chip label={props.valve1value} color="primary" variant="outlined" />
-
                     </Stack>
                     <Stack direction="row" spacing={1} mt={1} alignItems="center">
-                        <Android12Switch value={valve2} onClick={() => setValve2(!valve2)} />
+                        <Android12Switch value={valve2} onClick=
+                            {() => {
+                                setValve2(!valve2);
+                                console.log("Kirimmm nih");
+                                (props.connect) ? props.client.publish("cip/control/valve2/value",
+                                    (valve2 ? "1" : "0")) : null
+                            }} />
                         <Typography variant="subtitle2" fontWeight="600" fontSize={16} > Valve 2 </Typography>
                         <Chip label={props.valve2value} color="primary" variant="outlined" />
-
                     </Stack>
                     <Stack direction="row" spacing={1} mt={1} alignItems="center">
-                        <Android12Switch value={valve3} onClick={() => setValve3(!valve3)} />
+                        <Android12Switch value={valve3} onClick=
+                            {() => {
+                                setValve3(!valve3);
+                                console.log("Kirimmm nih");
+                                (props.connect) ? props.client.publish("cip/control/valve3/value",
+                                    (valve3 ? "1" : "0")) : null
+                            }} />
                         <Typography variant="subtitle2" fontWeight="600" fontSize={16} > Valve 3 </Typography>
                         <Chip label={props.valve3value} color="primary" variant="outlined" />
-
+                    </Stack>
+                    <Stack direction="row" spacing={1} mt={1} alignItems="center">
+                        <Android12Switch value={pompa} onClick=
+                            {() => {
+                                setPompa(!pompa);
+                                console.log("Kirimmm nih");
+                                (props.connect) ? props.client.publish("cip/control/pompa/value",
+                                    (pompa ? "1" : "0")) : null
+                            }} />
+                        <Typography variant="subtitle2" fontWeight="600" fontSize={16} > Pompa </Typography>
+                        <Chip label={props.pompavalue} color="primary" variant="outlined" />
                     </Stack>
                 </Grid>
             </Grid>
