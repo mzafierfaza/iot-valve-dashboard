@@ -32,9 +32,9 @@ const IotPage = () => {
   const topicPompa = "cip/control/pompa/value";
 
   useEffect(() => {
-    const mqtt_broker = process.env.NEXT_MQTT_BROKER_URL || "mqtt://localhost:1883";
-    const mqtt_broker_username = process.env.NEXT_MQTT_BROKER_USERNAME || "admin";
-    const mqtt_broker_password = process.env.NEXT_MQTT_BROKER_PASSWORD || "admin";
+    const mqtt_broker = process.env.NEXT_MQTT_BROKER_URL || "ws://194.233.77.60:9001";
+    const mqtt_broker_username = process.env.NEXT_MQTT_BROKER_USERNAME || "asak_galak";
+    const mqtt_broker_password = process.env.NEXT_MQTT_BROKER_PASSWORD || "kit0pacak";
 
     clientRef.current = mqtt.connect(mqtt_broker, {
       username: mqtt_broker_username,
