@@ -1,0 +1,18 @@
+version: '3'
+services:
+    app:
+      build: .
+      hostname: app
+      container_name: dashboard_iot_valve
+      ports:
+        - "3000:3000"
+      environment:
+        NEXT_PUBLIC_RECAPTCHA_SITE_KEY: 6LcU-3clAAAAACYL2Me-Rv6Tw6oWJ-2eGz6w5-lz
+        RECAPTCHA_PRIVATE_KEY: 6LcU-3clAAAAAO54ImT746FgqVPgeQmwGWoyQLjf
+        NEXT_PUBLIC_APPCHECK_DEBUG_TOKEN: 07FB5A73-C124-4D82-A5A1-79D6BC313803
+        NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: AIzaSyDLgIXFbG87JLU_-iY5tAuCZskD_VmgiIY
+      healthcheck:
+        test: ['CMD', 'curl', '-f', 'http://194.233.77.60:3000']
+        interval: 1m30s
+        timeout: 10s
+        retries: 3
