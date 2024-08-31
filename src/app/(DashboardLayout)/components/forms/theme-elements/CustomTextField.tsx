@@ -2,7 +2,7 @@ import React from 'react';
 import { styled } from '@mui/material/styles';
 import { TextField } from '@mui/material';
 
-const CustomTextField = styled((props: any) => <TextField {...props} />)(({ theme }) => ({
+const CustomTextField = styled(({ changevalue, ...props }: any) => <TextField {...props} onChange={(e) => changevalue(e.target.value)} />)(({ theme }) => ({
   '& .MuiOutlinedInput-input::-webkit-input-placeholder': {
     color: theme.palette.text.secondary,
     opacity: '0.8',

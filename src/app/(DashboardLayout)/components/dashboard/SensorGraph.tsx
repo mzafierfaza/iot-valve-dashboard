@@ -6,7 +6,7 @@ import { Stack, Typography, Avatar, Fab } from '@mui/material';
 import { IconArrowDownRight, IconCheck, IconCurrencyDollar, IconRefresh } from '@tabler/icons-react';
 import DashboardCard from '@/app/(DashboardLayout)/components/shared/DashboardCard';
 
-const SensorGraph = () => {
+const SensorGraph = (props: any) => {
     // chart color
     const theme = useTheme();
     const secondary = theme.palette.secondary.main;
@@ -81,7 +81,7 @@ const SensorGraph = () => {
         >
             <Stack direction="row" spacing={1} mt={1} alignItems="center">
                 <Typography variant="h3" fontWeight="700" mt="-20px">
-                    620
+                    {props.water}
                 </Typography>
                 <Typography variant="subtitle2" color="textSecondary">
                     CM
