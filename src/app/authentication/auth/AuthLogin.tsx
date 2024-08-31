@@ -41,7 +41,9 @@ const AuthLogin = ({ subtitle, subtext }: loginType) => {
 
     try {
       const { timeStamp, hashedPassword } = saltPassword(password);
-      const url = process.env.NEXT_API_BASE_URL + process.env.NEXT_API_PATH_LOGIN;
+      const base_url = process.env.NEXT_API_BASE_URL || "http://localhost:3000";
+      const path_login = process.env.NEXT_API_PATH_LOGIN || "/api/login";
+      const url = base_url + path_login;
       const signature = generateSignature({
         method: "POST",
         url,
